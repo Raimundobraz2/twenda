@@ -14,6 +14,23 @@
   }, { threshold: 0.1 });
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
+  // Toggle App Details
+  function toggleAppDetails() {
+    const details = document.getElementById('appDetails');
+    const btn = document.getElementById('btnSaberMais');
+    details.classList.toggle('show');
+    btn.classList.toggle('active');
+    // Observe fade-up elements inside details when shown
+    if (details.classList.contains('show')) {
+      details.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+      setTimeout(() => {
+        details.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 200);
+    }
+  }
+  // Make it globally accessible
+  window.toggleAppDetails = toggleAppDetails;
+
   // Nav compact on scroll
   window.addEventListener('scroll', () => {
     document.getElementById('navbar').style.padding = window.scrollY > 60 ? '10px 5vw' : '16px 5vw';
