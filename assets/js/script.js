@@ -39,13 +39,26 @@
       return;
     }
 
-    // Format date for WhatsApp message
-    const dataFormatada = new Date(data + 'T00:00:00').toLocaleDateString('pt-PT', { day: '2-digit', month: '2-digit', year: 'numeric' });
 
-    const msg = `🏍 *NOVO AGENDAMENTO TWENDA*\n\n👤 *Nome:* ${nome}\n📱 *Telefone:* ${tel}\n🛵 *Serviço:* ${servico}\n📅 *Data:* ${dataFormatada}\n⏰ *Hora:* ${hora}\n📍 *Partida:* ${partida}\n🏁 *Destino:* ${destino}${obs ? '\n📝 *Observações:* ' + obs : ''}\n\n_Mensagem gerada via site twenda.ao_`;
+const dataFormatada = new Date(data + 'T00:00:00').toLocaleDateString('pt-PT', {
+  day: '2-digit',
+  month: '2-digit',
+  year: 'numeric'
+});
 
-    const url = `https://wa.me/244922878879?text=${encodeURIComponent(msg)}`;
-    window.open(url, '_blank');
+const msg = `🏍 *NOVO AGENDAMENTO TWENDA*\n\n👤 *Nome:* ${nome}
+📱 *Telefone:* ${tel}
+🛵 *Serviço:* ${servico}
+📅 *Data:* ${dataFormatada}
+⏰ *Hora:* ${hora}
+📍 *Partida:* ${partida}
+🏁 *Destino:* ${destino}${obs ? '\n📝 *Observações:* ' + obs : ''}`;
+
+// Exemplo: mostrar no console
+console.log(msg);
+
+// Exemplo: mostrar na tela
+// document.getElementById('resultado').innerText = msg;
 
     document.getElementById('formSuccess').classList.add('show');
     document.getElementById('btnBook').style.display = 'none';
